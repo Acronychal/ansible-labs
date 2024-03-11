@@ -1,0 +1,14 @@
+---
+- name: backup-configurations
+  hosts: os10
+  gather_facts: false
+  connection: network_cli
+  collections:
+    - dellemc.os10
+  tasks:
+    - name: Retrieve Configuration
+      os10_config:
+        backup: true
+        backup_options:
+          dir_path: /home/sandboxadmin/network-devices/backups
+          filename:

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false 
+  tasks:
+    - name: start reachability checks
+      ansible.builtin.include_tasks: pb-ping.yaml
+      loop: " { { peers }}"
+      loop_control:
+        loop_var: peer
+        

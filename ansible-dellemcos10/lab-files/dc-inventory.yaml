@@ -1,0 +1,27 @@
+[os10]
+spine1 ansible_host=100.94.107.15
+spine2 ansible_host=100.94.107.14
+leaf1 ansible_host=100.94.107.13
+leaf2 ansible_host=100.94.107.12
+leaf3 ansible_host=100.94.107.11
+leaf4 ansible_host=100.94.107.10
+
+[os10:vars]
+ansible_connection=network_cli
+ansible_network_os=dellemc.os10.os10
+ansible_user=admin
+ansible_ssh_pass=admin
+
+[spine]
+spine1
+spine2
+
+[leaf]
+leaf1
+leaf2
+leaf3
+leaf4
+
+[datacenter:children]
+spine
+leaf

@@ -9,8 +9,8 @@ leaf4 ansible_host=100.94.107.10
 [os10:vars]
 ansible_connection=network_cli
 ansible_network_os=dellemc.os10.os10
-ansible_user=admin
-ansible_ssh_pass=admin
+ansible_user=<insertdata>
+ansible_ssh_pass=<insertdata>
 
 [spine]
 spine1

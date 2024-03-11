@@ -1,0 +1,22 @@
+---
+- name: Get OSPF Information from Hosts
+  hosts: ios
+
+  tasks:
+    - name: Show OSPF Information
+      ios_command:
+        commands:
+          - show ip ospf neighbor
+          - show ip route ospf 
+          - show ip protocols
+      register: sh_outputs
+    - debug:
+        msg: "{{sh_outputs.stdout_lines}}"
+
+    # - name: Check Conditions
+    #   ios_command:
+    #     commands:
+    #       - show ip ospf neighbor
+    #       - show ip route ospf 
+    #       - show ip protocols
+    #     match: any

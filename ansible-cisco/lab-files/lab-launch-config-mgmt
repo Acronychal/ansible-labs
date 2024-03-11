@@ -1,0 +1,172 @@
+# MGMT Switch
+
+enable
+configure terminal
+interface vlan 1
+ip address 192.168.100.1 255.255.255.0
+ip helper-address 192.168.100.1
+no shutdown
+exit
+
+ip dhcp pool ANSIBLE
+network 192.168.100.0 255.255.255.0
+default-router 192.168.100.1
+exit
+
+hostname MGMT
+ip domain-name sandboxlab.com
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+# R1
+
+configure terminal
+interface g0/0
+description "MGMT"
+ip address 192.168.100.9 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname R1
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+
+# R2
+
+configure terminal
+interface g0/0
+description "MGMT"
+ip address 192.168.100.10 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname R2
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+
+# S1
+
+enable
+configure terminal
+interface g3/3
+description "MGMT"
+no switchport
+ip address 192.168.100.11 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname S1
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+# S2
+
+enable
+configure terminal
+interface g3/3
+description "MGMT"
+no switchport
+ip address 192.168.100.12 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname S2
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+# S3
+
+
+enable
+configure terminal
+interface g3/3
+description "MGMT"
+no switchport
+ip address 192.168.100.13 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname S3
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+# S4
+
+enable
+configure terminal
+interface g3/3
+description "MGMT"
+no switchport
+ip address 192.168.100.14 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname S4
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+# S5
+
+enable
+configure terminal
+interface g3/3
+description "MGMT"
+no switchport
+ip address 192.168.100.15 255.255.255.0
+no shutdown
+exit
+
+ip domain-name sandboxlab.com
+hostname S5
+username ansibleadmin priv 15 secret ansibleadmin
+crypto key gen rsa mod 1024
+ip ssh ver 2
+line vty 0 15
+transport in ssh
+login local
+end
+
+

@@ -2,4 +2,4 @@
 
 #### Lab Topology
 
-![](ansible-mgmt-lab.png)
+![](./lab-files/ansible-mgmt-lab.png)

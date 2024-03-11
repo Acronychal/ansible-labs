@@ -1,0 +1,20 @@
+---
+- name: OSPF Configuration S3-5
+  hosts: switches
+
+  tasks:
+    - name: 
+      ios_command:
+        commands:
+          - show ip route
+          - show ip int brief | ex down
+      register: sh_outputs
+    - debug:
+        msg: "{{sh_outputs.stdout_lines}}"
+
+    - name: Check Conditions
+      ios_command:
+        commands:
+          - show ip route
+          - show ip int brief | ex down
+        match: any

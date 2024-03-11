@@ -1,0 +1,100 @@
+# Lab Setup Instructions
+Configure 2 spine switches
+Configure 4 leaf switches
+1 windows server with 2 nic teamed 
+
+
+
+# Port 22 enable on VM
+login as linuxadmin:linuxadmin
+sudo iptables -t filter -I INPUT 2 -p tcp --dport 22 -j ACCEPT
+linuxadmin
+
+
+# MGMT Switch Config
+
+enable
+configure terminal
+hostname MGMTSW
+interface vlan 1
+ip address 100.94.107.1 255.255.255.0
+ip helper-address 100.94.107.1
+no shutdown
+exit
+ip dhcp pool MGMT
+network 100.94.107.0 255.255.255.0
+default-router 100.94.107.1
+end
+wr
+
+# SPINE1
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.15/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit
+
+# SPINE2
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.14/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit
+
+# LEAF1
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.13/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit
+
+# LEAF2
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.12/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit
+
+# LEAF3
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.11/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit
+
+# LEAF4
+
+configure
+interface mgmt 1/1/1
+no ip address dhcp
+ip address 100.94.107.10/24
+no shutdown
+exit
+management route 0.0.0.0/0 100.94.107.254
+username admin sshkey "<insert SSH Pub Key>"
+exit

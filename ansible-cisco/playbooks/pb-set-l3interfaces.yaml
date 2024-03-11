@@ -1,0 +1,35 @@
+---
+- name: Configure L3 Interfaces
+  hosts: routers
+  tasks:
+    - name: Configure G0/1 To S1
+      ios_l3_interfaces:
+        config:
+          - name: GigabitEthernet0/1
+            ipv4:
+              - address: 10.1.1.1 255.255.255.252
+        state: merged
+      register: int
+
+    - debug:
+        var: int.before
+    - debug:
+        var: int.commands
+    - debug:
+        var: int.after
+
+    - name: Configure G0/2 to S2
+      ios_l3_interfaces:
+        config:
+          - name: GigabitEthernet0/2
+            ipv4:
+              - address: 10.1.2.1 255.255.255.252
+        state: merged
+      register: int
+
+    - debug:
+        var: int.before
+    - debug:
+        var: int.commands
+    - debug:
+        var: int.after
